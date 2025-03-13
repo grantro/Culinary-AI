@@ -1,4 +1,3 @@
-// CulinaryAI/src/api-client.js
 import axios from 'axios';
 import dotenv from 'dotenv';
 import https from 'https';
@@ -9,7 +8,11 @@ dotenv.config();
 
 class VeniceApiClient {
   constructor() {
-    this.apiKey = process.env.VENICE_API_KEY || "MAT6kFr2sQebCawiHtrgy7dHgdX5yndstF8UeY7KKV";
+    this.apiKey = process.env.VENICE_API_KEY;
+    if (!this.apiKey) {
+      console.error('Error: VENICE_API_KEY not found in environment variables');
+      throw new Error('VENICE_API_KEY is required. Set it in your .env file');
+    }
     this.baseUrl = 'https://api.venice.ai/api/v1';
     this.model = process.env.MEDIUM_VENICE_MODEL || 'deepseek-r1-llama-70b';
   }

@@ -5,7 +5,9 @@
     "main": "src/index.js",
     "scripts": {
       "start": "node src/index.js",
-      "test": "node scripts/test-api.js"
+      "test": "node scripts/test-api.js",
+      "eliza": "node scripts/launch-eliza.js",
+      "dashboard": "cd eliza && pnpm start:client"
     },
     "type": "module",
     "author": "",
